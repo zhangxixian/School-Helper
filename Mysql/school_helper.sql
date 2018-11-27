@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80013
 File Encoding         : 65001
 
-Date: 2018-11-27 15:09:08
+Date: 2018-11-27 15:26:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -79,7 +79,7 @@ CREATE TABLE `user` (
   `user_name` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_password` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `school_id` int(20) NOT NULL,
-  `user_student_num` int(20) NOT NULL,
+  `user_student_num` varchar(20) NOT NULL,
   `user_phone` varchar(20) NOT NULL,
   `user_image` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_money` double(10,2) NOT NULL,
