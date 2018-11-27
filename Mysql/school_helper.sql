@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80013
 File Encoding         : 65001
 
-Date: 2018-11-27 15:00:32
+Date: 2018-11-27 15:09:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,6 +56,21 @@ CREATE TABLE `reward` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `school`
+-- ----------------------------
+DROP TABLE IF EXISTS `school`;
+CREATE TABLE `school` (
+  `school_id` int(10) NOT NULL,
+  `school_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`school_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of school
+-- ----------------------------
+INSERT INTO `school` VALUES ('1', '河北师范大学');
+
+-- ----------------------------
 -- Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
@@ -63,7 +78,7 @@ CREATE TABLE `user` (
   `user_id` int(20) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_password` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `user_school` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `school_id` int(20) NOT NULL,
   `user_student_num` int(20) NOT NULL,
   `user_phone` varchar(20) NOT NULL,
   `user_image` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -72,7 +87,9 @@ CREATE TABLE `user` (
   `user_took_count` int(10) NOT NULL,
   `ueser_publish_count` int(10) NOT NULL,
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `user_id` (`user_id`)
+  UNIQUE KEY `user_id` (`user_id`),
+  KEY `school_id` (`school_id`),
+  CONSTRAINT `user_ibfk_1` FOREIGN KEY (`school_id`) REFERENCES `school` (`school_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
